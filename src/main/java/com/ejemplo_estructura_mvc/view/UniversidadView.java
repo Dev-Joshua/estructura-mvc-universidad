@@ -14,13 +14,41 @@ public class UniversidadView {
   }
 
 
-  public void crearUniversidad() {
+  //para crear una universidad solicitamos nit,nombre,etc. Por ende podemos manejar
+  //un solo objeto Scanner en todas la interfaz de usuario y no crear multiples objetos de tipo scanner
+  public void crearUniversidad(Scanner sc) {
+    //Encabezado
+    System.out.println("\n\n----------------CREAR UNIVERSIDAD------------------");
+    System.out.println("Por favor ingrese la siguiente informacion: ");
+
+    //Solicitud de datos
+    //Solicitar nit
+    System.out.println("Nit: ");
+    String nit = sc.next();
+    sc.nextLine();
+    //Solicitar nombre
+    System.out.println("Nombre: ");
+    String nombre = sc.next();
+    sc.nextLine();
+    //Solicitar direccion
+    System.out.println("Direccion: ");
+    String direccion = sc.next();
+    sc.nextLine();
+    //Solicitar email
+    System.out.println("Email: ");
+    String email = sc.next();
+    sc.nextLine();
+    
+    //Crear universidad(no podemos crearla directamente desde la vista, romperiamos el patron MVC.)
+    //Toca decirle al controlador que cree una universidad
+    controller.crearUniversidad(nit, nombre, direccion, email);
+    System.out.println("\nUniversidad creada con exito\n\n");
 
   }
 
   //Interfaz de usuario por consola
   public void menu() {
-    String mensaje = "-------------------UNIVERSIDADES CON MVC--------------------";
+    String mensaje = "-------------------UNIVERSIDADES CON MVC--------------------\n";
     mensaje += "1) Crear universidad\n";
     mensaje += "2) Mostrar todas las universidades\n";
     mensaje += "3) Consultar universidad por nit\n";
@@ -39,7 +67,7 @@ public class UniversidadView {
         //Evaluar la opcion ingresada por el usuario y asi ejecutar funcion
         switch(opcion){
           case 1:
-            crearUniversidad();
+            crearUniversidad(sc);
             break;
           case 2:
             break;
