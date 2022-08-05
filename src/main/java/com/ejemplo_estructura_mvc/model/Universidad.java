@@ -16,6 +16,22 @@ public class Universidad {
     this.email = email;
   }
 
+
+  //Para no hacer un getNit,getNombre, un get con cada atributo. Creamos el toString a la entidad Universidad
+  //el toString es un metodo que trae de manera implicita todas las clases para sobreescribirlo.
+  @Override                                                               //funciona para convertir una clase a un string
+  public String toString() {
+    String info = "-------------" + nombre + "------------\n";
+    info += "Nit: " + nit;
+    info += "\nDireccion: " + direccion;
+    info += "\nEmail: " + email;
+    info += "\n-------------------\n";
+
+    return info;
+  }
+
+
+
   //Consultores y modificadores
   public String getNit() {
     return nit;

@@ -16,6 +16,7 @@ public class UniversidadView {
 
   //para crear una universidad solicitamos nit,nombre,etc. Por ende podemos manejar
   //un solo objeto Scanner en todas la interfaz de usuario y no crear multiples objetos de tipo scanner
+  //Metodo crear una universidad
   public void crearUniversidad(Scanner sc) {
     //Encabezado
     System.out.println("\n\n----------------CREAR UNIVERSIDAD------------------");
@@ -39,14 +40,25 @@ public class UniversidadView {
     String email = sc.next();
     sc.nextLine();
     
-    //Crear universidad(no podemos crearla directamente desde la vista, romperiamos el patron MVC.)
+    //Crear universidad. (no podemos crearla directamente desde la vista, romperiamos el patron MVC.)
     //Toca decirle al controlador que cree una universidad
     controller.crearUniversidad(nit, nombre, direccion, email);
     System.out.println("\nUniversidad creada con exito\n\n");
-
   }
 
-  //Interfaz de usuario por consola
+
+
+  //Metodo para mostrar las universidades
+  public void mostrarUniversidades() {
+    for(int i=0; i<controller.getCantidadUniversidades(); i++) {                    //obtenemos el tamaño del array universidades por medio de controller. Para iterar ese array
+      String universidad = controller.obtenerUniversidadXIndex(i);                  //Obtengo la universidad por cada iteracion mediante el index i
+      System.out.println(universidad);                                              //Muestro la universidad
+    }
+  }
+
+
+  //Metodo para mostrar el menu
+  //Interfaz de usuario por consola 
   public void menu() {
     String mensaje = "-------------------UNIVERSIDADES CON MVC--------------------\n";
     mensaje += "1) Crear universidad\n";
@@ -70,6 +82,7 @@ public class UniversidadView {
             crearUniversidad(sc);
             break;
           case 2:
+            mostrarUniversidades();
             break;
           case 3:
             break;

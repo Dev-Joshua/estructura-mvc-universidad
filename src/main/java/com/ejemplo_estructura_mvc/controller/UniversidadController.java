@@ -17,15 +17,24 @@ public class UniversidadController {
 
   //Consultores
   public int getCantidadUniversidades() {
-    return universidades.size();
+    return universidades.size();                                 //Con el tamaño puedo iterar mi ciclo for en universidadview y mostrar las universidades en el metodo mostrarUni.
   }
 
   //Acciones
+
+  //Metodo para crear una universidad
   public void crearUniversidad(String nit, String nombre, String direccion, String email) {
     //Crear universidad
-    Universidad universidad1 = new Universidad(nit, nombre, direccion, email);
+    Universidad universidad = new Universidad(nit, nombre, direccion, email);
     //Almacenar universidad
-    universidades.add(universidad1);
+    universidades.add(universidad);
+  }
+
+
+  //Metodo para consultar universidades y retorna un String(xq'la view va a llamar al controller y este retornara en forma de String las universidades)
+  public String obtenerUniversidadXIndex(int index) {
+    Universidad universidad = universidades.get(index);                                 //Obtener universidad por index
+    return universidad.toString();                                                      //Retornar universidad
   }
 }
 
