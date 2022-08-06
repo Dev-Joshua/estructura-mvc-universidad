@@ -1,4 +1,5 @@
 package com.ejemplo_estructura_mvc.model;
+//El paquete model solamente va a tener la entidad(Universidad)
 
 //La clase Universidad pertenece al paquete modelo.
 public class Universidad {
@@ -63,5 +64,5 @@ public class Universidad {
 }
 
 /*El paquete MODEL va a contener la estructura de la clase. Es la representacion de la entidad 
- *Esta clase puede contener algunos metodos(acciones) que hagan parte de esta clase. 
+ *Esta clase puede contener algunos metodos(acciones en especifico) que hagan parte de esta clase. 
 */

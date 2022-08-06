@@ -3,14 +3,16 @@ package com.ejemplo_estructura_mvc.view;
 import java.util.Scanner;
 
 import com.ejemplo_estructura_mvc.controller.UniversidadController;
+//El paquete view(vista) va a contener todo lo que tenga que ver con informacion que se mostrara o solicitara  al usuario
+//En vista coloco toda la interfaz de usuario, vista estara en constante comunicacion con controller.
 
 public class UniversidadView {
   //Atributos
-  private UniversidadController controller;
+  private UniversidadController controller;              //Relacion. La vista esta instanciando al controller y el controlador al modelo
 
   //Constructor
   public UniversidadView() {
-    controller = new UniversidadController();
+    controller = new UniversidadController();           //Inicializo mi atributo
   }
 
 
@@ -48,14 +50,27 @@ public class UniversidadView {
 
 
 
-  //Metodo para mostrar las universidades
+  //Metodo para mostrar las universidades. Iteramos universidad x universidad...Este for itera y trae la posicion
   public void mostrarUniversidades() {
     for(int i=0; i<controller.getCantidadUniversidades(); i++) {                    //obtenemos el tamaño del array universidades por medio de controller. Para iterar ese array
-      String universidad = controller.obtenerUniversidadXIndex(i);                  //Obtengo la universidad por cada iteracion mediante el index i
+      String universidad = controller.obtenerUniversidadXIndex(i);                  //Obtengo la universidad(String) por cada iteracion mediante el index i(posicion)
       System.out.println(universidad);                                              //Muestro la universidad
     }
   }
 
+
+  //Metodo para capturar y mostar el nit(universidad)
+  public void mostraruniversidadXNit(Scanner sc) {
+    System.out.println("--------------CONSULTAR UNIVERSIDAD--------------");    //Encabezado. Informacion que se mostrara al usuario por consola
+    System.out.println("Por favor ingrese la siguiente informacion");
+    //Solicitar nit
+    System.out.println("Nit: ");
+    String nit = sc.next();
+    sc.nextLine();
+    //Mostrar universidad
+    System.out.println(controller.obtenerUniversidadXNit(nit));                   //Llamo al controlador, al metodo obtenerUni.. y le paso el nit que capturamos al usuario
+    
+  }
 
   //Metodo para mostrar el menu
   //Interfaz de usuario por consola 
@@ -66,9 +81,9 @@ public class UniversidadView {
     mensaje += "3) Consultar universidad por nit\n";
     mensaje += "4) Actualizar universidad\n";
     mensaje += "5) Eliminar universidad\n";
-    mensaje += "-1) Salir\n ";
+    mensaje += "-1) Salir\n";
     mensaje += ">>> ";
-  
+
     int opcion = 0;                                                                       //Variable para almacenar la opcion ingresada por el usuario
     Scanner sc = new Scanner(System.in);                                                  //Scanner es un objeto para solicitar datos por consola.
     try {
@@ -85,6 +100,7 @@ public class UniversidadView {
             mostrarUniversidades();
             break;
           case 3:
+          mostraruniversidadXNit(sc);
             break;
           case 4:
             break;
